@@ -20,21 +20,19 @@ function createDataGrid($scope, $http, dataUrl) {
 
     $scope.getPagedDataAsync = function (pageSize, page, searchText) {
         setTimeout(
-
             function () {
                 var data;
                 if (searchText) {
                     var ft = searchText.toLowerCase();
                     $http.get(dataUrl)
                         .success(
-
                         function (servicesJson) {
                             data = servicesJson.filter(function (item) {
                                 return JSON.stringify(
-                                        item)
+                                    item)
                                     .toLowerCase()
                                     .indexOf(
-                                        ft) != -1;
+                                    ft) != -1;
                             });
                             $scope.setPagingData(
                                 data,
@@ -43,7 +41,6 @@ function createDataGrid($scope, $http, dataUrl) {
                         });
                 } else {
                     $http.get(dataUrl).success(
-
                         function (servicesJson) {
                             // window.alert(servicesJson);
                             $scope.setPagingData(
@@ -96,8 +93,7 @@ function createDataGrid($scope, $http, dataUrl) {
 }
 
 
-
-var playground = myApp.controller('PlaygroundCtrl', ['$scope', '$routeParams', '$http', function ($scope, $routeParams, $http) {
+var playground = jksssweb.controller('PlaygroundCtrl', ['$scope', '$routeParams', '$http', function ($scope, $routeParams, $http) {
 
         // add service name to the scope...
         $scope.widgetName = $routeParams.widgetName;

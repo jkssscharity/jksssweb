@@ -1,9 +1,9 @@
 'use strict';
 
 // declare top-level module which depends on filters,and services
-var myApp = angular.module('myApp',
-    [   'myApp.filters',
-        'myApp.directives', // custom directives
+var jksssweb = angular.module('jksssweb',
+    [   'jksssweb.filters',
+        'jksssweb.directives', // custom directives
         'ngGrid', // angular grid
         'ui', // angular ui
         'ngSanitize', // for html-bind in ckeditor
@@ -13,11 +13,11 @@ var myApp = angular.module('myApp',
     ]);
 
 
-var filters = angular.module('myApp.filters', []);
-var directives = angular.module('myApp.directives', []);
+var filters = angular.module('jksssweb.filters', []);
+var directives = angular.module('jksssweb.directives', []);
 
 // bootstrap angular
-myApp.config(['$routeProvider', '$locationProvider', '$httpProvider', function ($routeProvider, $locationProvider, $httpProvider) {
+jksssweb.config(['$routeProvider', '$locationProvider', '$httpProvider', function ($routeProvider, $locationProvider, $httpProvider) {
 
     // TODO use html5 *no hash) where possible
     // $locationProvider.html5Mode(true);
@@ -57,7 +57,7 @@ myApp.config(['$routeProvider', '$locationProvider', '$httpProvider', function (
 }]);
 
 // this is run after angular is instantiated and bootstrapped
-myApp.run(function ($rootScope, $location, $http, $timeout, AuthService, RESTService) {
+jksssweb.run(function ($rootScope, $location, $http, $timeout, AuthService, RESTService) {
 
     // *****
     // Eager load some data using simple REST client

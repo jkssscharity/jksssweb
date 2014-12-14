@@ -69,7 +69,7 @@ angular.mock.$Browser = function () {
 
     self.defer = function (fn, delay) {
         delay = delay || 0;
-        self.deferredFns.push({time:(self.defer.now + delay), fn:fn, id:self.deferredNextId});
+        self.deferredFns.push({time: (self.defer.now + delay), fn: fn, id: self.deferredNextId});
         self.deferredFns.sort(function (a, b) {
             return a.time - b.time;
         });
@@ -142,18 +142,18 @@ angular.mock.$Browser.prototype = {
      * @description
      * run all fns in pollFns
      */
-    poll:function poll() {
+    poll: function poll() {
         angular.forEach(this.pollFns, function (pollFn) {
             pollFn();
         });
     },
 
-    addPollFn:function (pollFn) {
+    addPollFn: function (pollFn) {
         this.pollFns.push(pollFn);
         return pollFn;
     },
 
-    url:function (url, replace) {
+    url: function (url, replace) {
         if (url) {
             this.$$url = url;
             return this;
@@ -162,7 +162,7 @@ angular.mock.$Browser.prototype = {
         return this.$$url;
     },
 
-    cookies:function (name, value) {
+    cookies: function (name, value) {
         if (name) {
             if (value == undefined) {
                 delete this.cookieHash[name];
@@ -181,7 +181,7 @@ angular.mock.$Browser.prototype = {
         }
     },
 
-    notifyWhenNoOutstandingRequests:function (fn) {
+    notifyWhenNoOutstandingRequests: function (fn) {
         fn();
     }
 };
@@ -279,16 +279,16 @@ angular.mock.$LogProvider = function () {
 
     this.$get = function () {
         var $log = {
-            log:function () {
+            log: function () {
                 $log.log.logs.push(concat([], arguments, 0));
             },
-            warn:function () {
+            warn: function () {
                 $log.warn.logs.push(concat([], arguments, 0));
             },
-            info:function () {
+            info: function () {
                 $log.info.logs.push(concat([], arguments, 0));
             },
-            error:function () {
+            error: function () {
                 $log.error.logs.push(concat([], arguments, 0));
             }
         };
@@ -455,8 +455,8 @@ angular.mock.$LogProvider = function () {
             timestamp = self.origDate.getTime();
             if (isNaN(timestamp))
                 throw {
-                    name:"Illegal Argument",
-                    message:"Arg '" + tsStr + "' passed into TzDate constructor is not a valid date string"
+                    name: "Illegal Argument",
+                    message: "Arg '" + tsStr + "' passed into TzDate constructor is not a valid date string"
                 };
         } else {
             self.origDate = new Date(timestamp);
@@ -920,7 +920,7 @@ function createHttpBackendMock($delegate, $browser) {
     $httpBackend.when = function (method, url, data, headers) {
         var definition = new MockHttpExpectation(method, url, data, headers),
             chain = {
-                respond:function (status, data, headers) {
+                respond: function (status, data, headers) {
                     definition.response = createResponse(status, data, headers);
                 }
             };
@@ -1040,7 +1040,7 @@ function createHttpBackendMock($delegate, $browser) {
         var expectation = new MockHttpExpectation(method, url, data, headers);
         expectations.push(expectation);
         return {
-            respond:function (status, data, headers) {
+            respond: function (status, data, headers) {
                 expectation.response = createResponse(status, data, headers);
             }
         };
@@ -1368,19 +1368,19 @@ angular.mock.$RootElementProvider = function () {
  * mocks to the {@link AUTO.$injector $injector}.
  */
 angular.module('ngMock', ['ng']).provider({
-    $browser:angular.mock.$BrowserProvider,
-    $exceptionHandler:angular.mock.$ExceptionHandlerProvider,
-    $log:angular.mock.$LogProvider,
-    $httpBackend:angular.mock.$HttpBackendProvider,
-    $rootElement:angular.mock.$RootElementProvider
+    $browser: angular.mock.$BrowserProvider,
+    $exceptionHandler: angular.mock.$ExceptionHandlerProvider,
+    $log: angular.mock.$LogProvider,
+    $httpBackend: angular.mock.$HttpBackendProvider,
+    $rootElement: angular.mock.$RootElementProvider
 }).config(function ($provide) {
-        $provide.decorator('$timeout', function ($delegate, $browser) {
-            $delegate.flush = function () {
-                $browser.defer.flush();
-            };
-            return $delegate;
-        });
+    $provide.decorator('$timeout', function ($delegate, $browser) {
+        $delegate.flush = function () {
+            $browser.defer.flush();
+        };
+        return $delegate;
     });
+});
 
 
 /**
@@ -1425,7 +1425,7 @@ angular.module('ngMockE2E', ['ng']).config(function ($provide) {
  * on the `ngMockE2E` and your application modules and defines the fake backend:
  *
  * <pre>
- *   myAppDev = angular.module('myAppDev', ['myApp', 'ngMockE2E']);
+ *   myAppDev = angular.module('myAppDev', ['jksssweb', 'ngMockE2E']);
  *   myAppDev.run(function($httpBackend) {
  *     phones = [{name: 'phone1'}, {name: 'phone2'}];
  *
